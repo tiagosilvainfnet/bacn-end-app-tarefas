@@ -15,24 +15,24 @@ const userCtrl = new UserController();
 app.get("/", (req, res) => {
   res.send("App is running");
 });
-router.post("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   const result = await authCtrl.login(req.body.userEmail, req.body.password);
   res.statusCode = result.status;
   res.send(result.result);
 });
 
-router.post("/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const result = await userCtrl.createUser(req.body);
   res.statusCode = result.status;
   res.send(result.result);
 })
 
-router.get("/user:id", async (req, res) => {
+app.get("/user:id", async (req, res) => {
   const result = await userCtrl.getUser(req.params.id);
   res.statusCode = result.status;
   res.send(result.result);
 })
-router.put("/user:id", async (req, res) => {
+app.put("/user:id", async (req, res) => {
   const result = await userCtrl.updateUser(req.params.id, req.body);
   res.statusCode = result.status;
   res.send(result.result);

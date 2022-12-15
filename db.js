@@ -11,3 +11,5 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   dialect: "mysql", //informar o tipo de banco que vamos utilizar
   host: dbHost, //o host, neste caso estamos com um banco local
 });
+
+module.exports = sequelize;
